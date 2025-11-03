@@ -3,7 +3,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 
-const Button = ({ onClick, variant, children }) => (
+type ButtonProps = {
+  variant?: string;
+  href?: string;
+  onClick?: () => void;
+  children: any;
+};
+
+const Button = ({ onClick, variant, children }: ButtonProps) => (
   <button
     onClick={onClick}
     className={`px-4 py-2 rounded-lg transition ${
@@ -16,7 +23,14 @@ const Button = ({ onClick, variant, children }) => (
   </button>
 );
 
-const Card = ({ title, description, tech, link }) => (
+type CardProps = {
+  title?: string;
+  description?: string;
+  tech?: string;
+  link?: string;
+};
+
+const Card = ({ title, description, tech, link }: CardProps) => (
   <motion.a
     href={link}
     target="_blank"
@@ -51,7 +65,7 @@ export default function Home() {
     delay: Math.random() * -20,
   }));
 
-  const content = {
+  const content: any = {
     es: {
       hero: {
         title: "Desarrollador Web Full Stack",
@@ -329,7 +343,7 @@ export default function Home() {
             {t.services.title}
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
-            {t.services.items.map((s) => (
+            {t.services.items.map((s: any) => (
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 key={s.title}
@@ -375,7 +389,7 @@ export default function Home() {
               {t.certifications.title}
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
-              {t.certifications.items.map((s) => (
+              {t.certifications.items.map((s: any) => (
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   key={s.title}
@@ -412,7 +426,7 @@ export default function Home() {
             {t.projects.title}
           </h3>
           <div className="grid md:grid-cols-2 gap-8">
-            {t.projects.items.map((p) => (
+            {t.projects.items.map((p: any) => (
               <Card
                 key={p.name}
                 title={p.name}
